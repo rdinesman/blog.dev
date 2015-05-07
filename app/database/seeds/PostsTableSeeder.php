@@ -10,7 +10,7 @@
 			DB::table('posts')->delete();
 
 			for($i = 0; $i < 101; $i++){
-				$title         = implode($faker->words(rand(5,7)), ' ');
+				$title         = implode($faker->unique()->words(rand(5,7)), ' ');
 				$post          = new Post();
 				$post->title   = $title;
 				$post->body    = $faker->text();
