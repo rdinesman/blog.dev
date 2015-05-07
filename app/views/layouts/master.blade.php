@@ -24,8 +24,18 @@
 			<a href="{{{ action('AboutController@about') }}}" class="headerTab abt {{{ setActive('about') }}}" value="about">About</a>
 			<a href="{{{ action('PostsController@index') }}}" class="headerTab pst {{{ setActive('posts') }}}" value="posts">Blog</a>
 		</div>
-
 	</div>
+	
+	<div id="sidebar">
+		{{ Form::open(array('action' => array('PostsController@update'), 'method' => 'PUT')) }}
+			{{ Form::label('search', 'Search') }}
+			<br>
+			{{ Form::text('search') }}
+			<br>
+			{{  Form::submit('Search', ['id' => 'searchSubmit']) }}
+		{{ Form::close() }}
+	</div>
+	
 	<div id="content">
 		@yield('content')
 	</div>

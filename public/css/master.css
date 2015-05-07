@@ -2,6 +2,7 @@
 	body{
 		background: url("../img/debut_light.png");
 		font-family: 'PT Sans', sans-serif;
+		margin: 0px;
 	}
 
 	input{
@@ -24,14 +25,38 @@
 	}
 
 	#content{
-		margin-top: 57px;
 		padding: 100px;
 		padding-top: 50px;
+		margin-left: 400px;
+		margin-bottom: 57px;
 	}
 
 	#formSubmit{
 		width: 200px;
 		height: 100px;
+	}
+
+/*Sidebar*/
+	#sidebar{
+		width: 400px;
+		height: 705px;
+		border: solid black 2px;
+		float: left;
+		position: absolute;
+	}
+
+	#sidebar *{
+		margin-left: 2%;
+	}
+
+	#sidebar input{
+		width: 90%;
+		margin-bottom: 2px;
+		/*margin-left: 5%;*/
+	}
+
+	#sidebar label{
+		font-size: 20px;
 	}
 
 /*Header and Footer*/
@@ -99,6 +124,7 @@
 	#footer{
 		position: relative;
 		top: 100%;
+		margin-top: 10px;
 	}
 
 /*Posts Index*/
