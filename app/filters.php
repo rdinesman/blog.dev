@@ -13,7 +13,7 @@
 
 App::before(function($request)
 {
-	//
+	
 });
 
 
@@ -43,15 +43,21 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('showLogin');
 		}
 	}
 });
 
 
-Route::filter('auth.basic', function()
-{
-	return Auth::basic();
+// Route::filter('auth.basic', function()
+// {
+// 	return Auth::basic();
+// });
+
+Route::filter('authUser', function(){
+	if(Auth::guest()){	
+		return Redirect::to("login");
+	}
 });
 
 /*
