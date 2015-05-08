@@ -11,13 +11,6 @@
 	<div id="header">
 		<span id="headerTitle">The Blog of the Dinesman</span>
 
-		@if(Auth::check())
-			<span id='loggedInUser'>Logged In As: {{{ Auth::user()->username }}}</span>
-			<a href="{{{ action('LoginController@logout') }}}">Logout</a>
-		@else
-			<a href="{{{ action('LoginController@login') }}}">Login</a>
-		@endif
-
 		<div id='tabContainer'>
 			<a href="{{{ action('PortfolioController@portfolio') }}}" class="headerTab port {{{ setActive('portfolio') }}}" value="portfolio">Portfolio</a>
 			<a href="{{{ action('ResumeController@resume') }}}" class="headerTab res {{{ setActive('resume') }}}" value="resume">Resume</a>
@@ -26,19 +19,28 @@
 		</div>
 	</div>
 	
-	<div id="sidebar">
-		{{ Form::open(array('action' => array('PostsController@update'), 'method' => 'PUT')) }}
-			{{ Form::label('search', 'Search') }}
-			<br>
-			{{ Form::text('search') }}
-			<br>
-			{{  Form::submit('Search', ['id' => 'searchSubmit']) }}
-		{{ Form::close() }}
-	</div>
-	
-	<div id="content">
-		@yield('content')
-	</div>
+	{{-- <div id="container"> --}}
+		<div id="sidebar">
+			@if(Auth::check())
+				<span id='loggedInUser'>Logged In As: {{{ Auth::user()->username }}}</span>
+				<a href="{{{ action('LoginController@logout') }}}">Logout</a>
+			@else
+				<a href="{{{ action('LoginController@login') }}}">Login</a>
+			@endif
+
+			{{ Form::open(array('action' => array('PostsController@update'), 'method' => 'PUT')) }}
+				{{ Form::label('search', 'Search') }}
+				<br>
+				{{ Form::text('search') }}
+				<br>
+				{{  Form::submit('Search', ['id' => 'searchSubmit']) }}
+			{{ Form::close() }}
+		</div>
+		
+		<div id="content">
+			@yield('content')
+		</div>
+	{{-- </div> --}}
 
 	<div id="footer">footer</div>
 </body>
